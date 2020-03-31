@@ -1,0 +1,8 @@
+<resources>
+  <string name="app_name">EvanaMemoryGame</string>
+    <string name="memory_game_menu_title">Memory Game</string>
+  <string name="menu_3x4">3x4</string>
+  <string name="menu_5x2">5x2</string>
+  <string name="menu_4x4">4x4</string>
+  <string name="menu_4x5">4x5</string>
+</resources>

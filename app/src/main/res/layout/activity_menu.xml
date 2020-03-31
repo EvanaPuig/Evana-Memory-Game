@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activities.MenuActivity">
+
+    <TextView
+        android:id="@+id/memory_game_menu_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/memory_game_menu_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/memory_game_menu_3x4_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_3x4"
+        android:onClick="button3x4Clicked"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/memory_game_menu_title_tv" />
+
+  <Button
+      android:id="@+id/memory_game_menu_5x2_button"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/menu_5x2"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/memory_game_menu_3x4_button" />
+
+  <Button
+      android:id="@+id/memory_game_menu_4x4_button"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/menu_4x4"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/memory_game_menu_5x2_button" />
+
+  <Button
+      android:id="@+id/memory_game_menu_4x5_button"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/menu_4x5"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/memory_game_menu_4x4_button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
