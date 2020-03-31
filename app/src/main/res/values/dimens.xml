@@ -4,4 +4,6 @@
     <dimen name="menu_title_margin">30dp</dimen>
     <dimen name="button_menu_text_size">20sp</dimen>
     <dimen name="button_menu_margin">10dp</dimen>
+    <dimen name="menu_button_height">100dp</dimen>
+    <dimen name="menu_instructions_size">25sp</dimen>
 </resources>

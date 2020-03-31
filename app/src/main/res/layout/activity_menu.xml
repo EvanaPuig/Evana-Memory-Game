@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".view.activities.MenuActivity">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/memory_game_menu_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,13 +17,13 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/memory_game_menu_instructions_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/menu_title_margin"
         android:text="@string/menu_view_instructions"
-        android:textSize="25sp"
+        android:textSize="@dimen/menu_instructions_size"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/memory_game_menu_title_tv" />
@@ -39,7 +39,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/memory_game_menu_3x4_button"
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="@dimen/menu_button_height"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:layout_marginHorizontal="@dimen/button_menu_margin"
@@ -51,7 +51,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/memory_game_menu_5x2_button"
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="@dimen/menu_button_height"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:layout_marginHorizontal="@dimen/button_menu_margin"
@@ -63,7 +63,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/memory_game_menu_4x4_button"
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="@dimen/menu_button_height"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:layout_marginHorizontal="@dimen/button_menu_margin"
@@ -75,7 +75,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/memory_game_menu_4x5_button"
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="@dimen/menu_button_height"
             android:layout_columnWeight="1"
             android:layout_gravity="fill_horizontal"
             android:layout_marginHorizontal="@dimen/button_menu_margin"
