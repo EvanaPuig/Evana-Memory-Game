@@ -10,59 +10,79 @@
         android:id="@+id/memory_game_menu_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/menu_title_margin"
         android:text="@string/memory_game_menu_title"
         android:textSize="@dimen/menu_title_size"
-        android:layout_marginVertical="@dimen/menu_title_margin"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/memory_game_menu_instructions_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/menu_title_margin"
+        android:text="Choose a size!"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/memory_game_menu_title_tv" />
 
     <GridLayout
         android:id="@+id/memory_game_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/button_menu_margin"
         android:columnCount="4"
-        app:layout_constraintTop_toBottomOf="@id/memory_game_menu_title_tv">
+        app:layout_constraintTop_toBottomOf="@id/memory_game_menu_instructions_tv">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/memory_game_menu_3x4_button"
             android:layout_width="0dp"
+            android:layout_height="100dp"
             android:layout_columnWeight="1"
-            android:gravity="center"
             android:layout_gravity="fill_horizontal"
-            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/button_menu_margin"
+            android:gravity="center"
             android:onClick="buttonClicked"
-            android:text="@string/menu_3x4" />
+            android:text="@string/menu_3x4"
+            android:textSize="@dimen/button_menu_text_size" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/memory_game_menu_5x2_button"
             android:layout_width="0dp"
+            android:layout_height="100dp"
             android:layout_columnWeight="1"
-            android:gravity="center"
             android:layout_gravity="fill_horizontal"
-            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/button_menu_margin"
+            android:gravity="center"
             android:onClick="buttonClicked"
-            android:text="@string/menu_5x2" />
+            android:text="@string/menu_5x2"
+            android:textSize="@dimen/button_menu_text_size" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/memory_game_menu_4x4_button"
             android:layout_width="0dp"
+            android:layout_height="100dp"
             android:layout_columnWeight="1"
-            android:gravity="center"
             android:layout_gravity="fill_horizontal"
-            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/button_menu_margin"
+            android:gravity="center"
             android:onClick="buttonClicked"
-            android:text="@string/menu_4x4" />
+            android:text="@string/menu_4x4"
+            android:textSize="@dimen/button_menu_text_size" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/memory_game_menu_4x5_button"
             android:layout_width="0dp"
+            android:layout_height="100dp"
             android:layout_columnWeight="1"
-            android:gravity="center"
             android:layout_gravity="fill_horizontal"
-            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/button_menu_margin"
+            android:gravity="center"
             android:onClick="buttonClicked"
-            android:text="@string/menu_4x5" />
+            android:text="@string/menu_4x5"
+            android:textSize="@dimen/button_menu_text_size" />
 
     </GridLayout>
 

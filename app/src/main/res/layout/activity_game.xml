@@ -7,9 +7,11 @@
     tools:context=".view.activities.GameActivity">
 
     <TextView
+        android:id="@+id/game_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Game"
+        android:textSize="@dimen/button_menu_text_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
