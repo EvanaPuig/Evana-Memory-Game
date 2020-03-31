@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.evanamargain.android.evanamemorygame"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -35,7 +35,15 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    //Anko: https://github.com/Kotlin/anko
+    // Material Design
+    def material_design_version = "1.1.0"
+    implementation "com.google.android.material:material:$material_design_version"
+
+    // Android Architecture Components
+    def android_architecture_components_version = "2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$android_architecture_components_version"
+
+    // Anko: https://github.com/Kotlin/anko
     def anko_version = '0.10.7'
     implementation "org.jetbrains.anko:anko:$anko_version"
     implementation "org.jetbrains.anko:anko-commons:$anko_version"

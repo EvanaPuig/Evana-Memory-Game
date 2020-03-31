@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="menu_title_size">30sp</dimen>
+    <dimen name="menu_title_margin">30dp</dimen>
+    <dimen name="button_menu_text_size">25sp</dimen>
+    <dimen name="button_menu_padding">5dp</dimen>
+</resources>

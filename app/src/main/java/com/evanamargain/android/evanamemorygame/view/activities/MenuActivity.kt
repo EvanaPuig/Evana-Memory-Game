@@ -13,7 +13,9 @@ class MenuActivity : AppCompatActivity() {
     setContentView(R.layout.activity_menu)
   }
 
-  fun button3x4Clicked(view: View) {
+  fun buttonClicked(view: View) {
+    var id = view.id
+    print("button id = $id")
     startActivity(intentFor<GameActivity>())
   }
 }
