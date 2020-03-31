@@ -16,6 +16,7 @@ class GameActivity : AppCompatActivity() {
         intent?.extras?.get("size")?.let {
             sizeOfGame = it as GameConfig
         }
-        game_tv.text = "Grid of size ${sizeOfGame.description} with: \n${sizeOfGame.columns} columns and ${sizeOfGame.rows} rows"
+        game_tv.text =
+            "Grid of size ${sizeOfGame.description} with: \n${sizeOfGame.columns} columns and ${sizeOfGame.rows} rows"
     }
 }
