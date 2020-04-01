@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="card_fronts">
+        <item>@drawable/memory_bat_card_front</item>
+        <item>@drawable/memory_cat_card_front</item>
+        <item>@drawable/memory_cow_card_front</item>
+        <item>@drawable/memory_dragon_card_front</item>
+        <item>@drawable/memory_garbage_man_card_front</item>
+        <item>@drawable/memory_ghost_dog_card_front</item>
+        <item>@drawable/memory_hen_card_front</item>
+        <item>@drawable/memory_horse_card_front</item>
+        <item>@drawable/memory_pig_card_front</item>
+        <item>@drawable/memory_spider_card_front</item>
+    </integer-array>
+</resources>
