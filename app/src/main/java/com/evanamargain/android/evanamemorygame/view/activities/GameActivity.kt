@@ -24,16 +24,22 @@ class GameActivity : AppCompatActivity() {
             sizeOfGame = it as GameConfig
         }
 
-        //TODO: remove this later
-        game_title_tv.text =
-            "Grid of size ${sizeOfGame.description} with: \n${sizeOfGame.columns} columns and ${sizeOfGame.rows} rows"
-
         gridLayoutManager = GridLayoutManager(this, sizeOfGame.columns)
         game_grid_rv.layoutManager = gridLayoutManager
 
-        val cards = ArrayList<Card>()
-        cards.add(Card("",R.drawable.ic_launcher_background))
-        gameGridAdapter = GameGridAdapter(cards)
+        val cards = loadCardList()
+        gameGridAdapter = GameGridAdapter(cards, applicationContext)
         game_grid_rv.adapter = gameGridAdapter
+    }
+
+    private fun loadCardList(): ArrayList<Card> {
+        val cards = ArrayList<Card>()
+
+        var totalSize = sizeOfGame.columns * sizeOfGame.rows
+
+        for (card in 0 until totalSize) {
+            cards.add(Card("a", R.drawable.all_card_backs))
+        }
+        return cards
     }
 }

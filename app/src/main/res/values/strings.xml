@@ -5,6 +5,6 @@
     <string name="menu_5x2">5x2</string>
     <string name="menu_4x4">4x4</string>
     <string name="menu_4x5">4x5</string>
-    <string name="game_view_title">Game</string>
+    <string name="game_view_title">Find matching pairs!</string>
   <string name="menu_view_instructions">Choose a size!</string>
 </resources>
