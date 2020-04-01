@@ -5,17 +5,19 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.evanamargain.android.evanamemorygame.R
 import com.evanamargain.android.evanamemorygame.inflate
 import com.evanamargain.android.evanamemorygame.model.Card
+import com.evanamargain.android.evanamemorygame.viewmodel.GameViewModel
 import kotlinx.android.synthetic.main.recyclerview_item_card.view.*
 
-class GameGridAdapter(private val cards: ArrayList<Card>, private val context: Context) : RecyclerView.Adapter<GameGridAdapter.CardHolder>() {
+class GameGridAdapter(private val cards: ArrayList<Card>, private val context: Context, private val model: GameViewModel) : RecyclerView.Adapter<GameGridAdapter.CardHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameGridAdapter.CardHolder {
         val inflatedView = parent.inflate(R.layout.recyclerview_item_card, false)
-        return CardHolder(inflatedView, context)
+        return CardHolder(inflatedView, context, model)
     }
 
     override fun getItemCount() = cards.size
@@ -25,32 +27,32 @@ class GameGridAdapter(private val cards: ArrayList<Card>, private val context: C
         holder.bindCard(itemCard)
     }
 
-    class CardHolder(v: View, context: Context) : RecyclerView.ViewHolder(v), View.OnClickListener {
-
+    class CardHolder(v: View, context: Context, model: GameViewModel) : RecyclerView.ViewHolder(v), View.OnClickListener {
         private var view: View = v
         private var card: Card? = null
         private var context: Context
+        private var model: GameViewModel
 
         init {
             v.setOnClickListener(this)
             this.context = context
+            this.model = model
         }
 
         override fun onClick(v: View) {
             Log.d("RecyclerView", "Flip card!")
-            var images = (context.resources.obtainTypedArray(R.array.card_fronts))
-            var imageToSet = card?.drawableFront?.let { images.getDrawable(it) }
-            view.itemImage.setImageDrawable(imageToSet)
+            if(!card?.disabled!!) {
+                var images = (context.resources.obtainTypedArray(R.array.card_fronts))
+                var imageToSet = card?.drawableFront?.let { images.getDrawable(it) }
+                view.itemImage.setImageDrawable(imageToSet)
+                model.cardOpen(card!!)
+            }
         }
 
         fun bindCard(card: Card) {
             this.card = card
             var drawable = ResourcesCompat.getDrawable(context.resources, card.drawableBack, null)
             view.itemImage.setImageDrawable(drawable)
-        }
-
-        companion object {
-            private val CARD_KEY = "CARD"
         }
     }
 

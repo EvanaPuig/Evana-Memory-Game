@@ -2,6 +2,8 @@ package com.evanamargain.android.evanamemorygame.view.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.evanamargain.android.evanamemorygame.R
 import com.evanamargain.android.evanamemorygame.model.Card
@@ -13,7 +15,6 @@ import kotlinx.android.synthetic.main.activity_game.*
 
 class GameActivity : AppCompatActivity() {
 
-    private lateinit var sizeOfGame: GameConfig
     private lateinit var gridLayoutManager: GridLayoutManager
     private lateinit var gameGridAdapter: GameGridAdapter
     private lateinit var model: GameViewModel
@@ -22,18 +23,20 @@ class GameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        model = GameViewModel()
+        model = ViewModelProvider(this)[GameViewModel::class.java]
 
         intent?.extras?.get("size")?.let {
-            sizeOfGame = it as GameConfig
+            model.gameSize = it as GameConfig
         }
 
-        gridLayoutManager = GridLayoutManager(this, sizeOfGame.columns)
+        gridLayoutManager = GridLayoutManager(this, model.gameSize.columns)
         game_grid_rv.layoutManager = gridLayoutManager
 
-        val cards = model.getCardList()
-        gameGridAdapter = GameGridAdapter(cards.value!!, applicationContext)
-        game_grid_rv.adapter = gameGridAdapter
+        model.getCardList().observe(this, Observer {
+            gameGridAdapter = GameGridAdapter(model.allCards.value!!, applicationContext, model)
+            game_grid_rv.adapter = gameGridAdapter
+        })
+
     }
 
 

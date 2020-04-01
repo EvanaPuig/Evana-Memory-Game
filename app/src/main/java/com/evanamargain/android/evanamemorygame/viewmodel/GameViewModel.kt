@@ -11,7 +11,7 @@ import com.evanamargain.android.evanamemorygame.model.GameConfig
 
 class GameViewModel : ViewModel() {
     lateinit var allCards: MutableLiveData<ArrayList<Card>>
-    lateinit var openedCards: ArrayList<Card>
+    private var openedCards = ArrayList<Card>()
     private var moves = 0
     var gameSize = GameConfig.THREE_BY_FOUR
 
@@ -22,9 +22,8 @@ class GameViewModel : ViewModel() {
         return allCards
     }
 
-    fun loadCardList(sizeOfGame: GameConfig) {
+    private fun loadCardList(sizeOfGame: GameConfig) {
         val allCardsData = ArrayList<Card>()
-        openedCards = ArrayList()
 
         val totalSize = sizeOfGame.columns * sizeOfGame.rows
         val randomList = (0..9).shuffled().take(totalSize/2)
@@ -40,6 +39,8 @@ class GameViewModel : ViewModel() {
 
     fun cardOpen(card: Card) {
         openedCards.add(card)
+        Log.d("Log","openedCards $openedCards")
+
         if(openedCards.size == 2){
             allCards.value?.let { disable(it) }
             moveCounter()
