@@ -31,8 +31,8 @@ class GameActivity : AppCompatActivity() {
         gridLayoutManager = GridLayoutManager(this, sizeOfGame.columns)
         game_grid_rv.layoutManager = gridLayoutManager
 
-        val cards = model.loadCardList(sizeOfGame)
-        gameGridAdapter = GameGridAdapter(cards, applicationContext)
+        val cards = model.getCardList()
+        gameGridAdapter = GameGridAdapter(cards.value!!, applicationContext)
         game_grid_rv.adapter = gameGridAdapter
     }
 
