@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activities.MenuActivity">
+    tools:context=".view.activities.MenuActivity"
+    android:background="@drawable/background_drawable">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/memory_game_menu_title_tv"

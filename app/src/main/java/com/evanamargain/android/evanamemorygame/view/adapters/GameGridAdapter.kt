@@ -1,7 +1,6 @@
 package com.evanamargain.android.evanamemorygame.view.adapters
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +10,6 @@ import com.evanamargain.android.evanamemorygame.R
 import com.evanamargain.android.evanamemorygame.inflate
 import com.evanamargain.android.evanamemorygame.model.Card
 import kotlinx.android.synthetic.main.recyclerview_item_card.view.*
-import org.jetbrains.anko.image
-import org.jetbrains.anko.wrapContent
 
 class GameGridAdapter(private val cards: ArrayList<Card>, private val context: Context) : RecyclerView.Adapter<GameGridAdapter.CardHolder>() {
 
