@@ -11,6 +11,7 @@ import com.evanamargain.android.evanamemorygame.R
 import com.evanamargain.android.evanamemorygame.inflate
 import com.evanamargain.android.evanamemorygame.model.Card
 import kotlinx.android.synthetic.main.recyclerview_item_card.view.*
+import org.jetbrains.anko.image
 import org.jetbrains.anko.wrapContent
 
 class GameGridAdapter(private val cards: ArrayList<Card>, private val context: Context) : RecyclerView.Adapter<GameGridAdapter.CardHolder>() {
@@ -40,11 +41,14 @@ class GameGridAdapter(private val cards: ArrayList<Card>, private val context: C
 
         override fun onClick(v: View) {
             Log.d("RecyclerView", "Flip card!")
+            var images = (context.resources.obtainTypedArray(R.array.card_fronts))
+            var imageToSet = card?.drawableFront?.let { images.getDrawable(it) }
+            view.itemImage.setImageDrawable(imageToSet)
         }
 
         fun bindCard(card: Card) {
             this.card = card
-            var drawable = ResourcesCompat.getDrawable(context.resources, card.drawable, null)
+            var drawable = ResourcesCompat.getDrawable(context.resources, card.drawableBack, null)
             view.itemImage.setImageDrawable(drawable)
         }
 

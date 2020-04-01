@@ -1,6 +1,8 @@
 package com.evanamargain.android.evanamemorygame.model
 
+import android.graphics.drawable.Drawable
+
 data class Card(
-    var name: String = "",
-    var drawable: Int = 0
+    var drawableBack: Int = 0,
+    var drawableFront: Int = 0
 )
