@@ -2,16 +2,20 @@ package com.evanamargain.android.evanamemorygame.view.activities
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.evanamargain.android.evanamemorygame.R
-import com.evanamargain.android.evanamemorygame.model.Card
 import com.evanamargain.android.evanamemorygame.model.GameConfig
 import com.evanamargain.android.evanamemorygame.view.adapters.GameGridAdapter
 import com.evanamargain.android.evanamemorygame.viewmodel.GameViewModel
 import kotlinx.android.synthetic.main.activity_game.*
+import kotlinx.android.synthetic.main.custom_action_bar_layout.*
+import org.jetbrains.anko.intentFor
 
 
 class GameActivity : AppCompatActivity() {
@@ -24,9 +28,16 @@ class GameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        var actionBar = supportActionBar
+        actionBar?.setDisplayShowHomeEnabled(false)
+        actionBar?.setDisplayShowTitleEnabled(false)
+        val mInflater = LayoutInflater.from(this)
 
-        var actionBar = actionBar
+        val actionBarCustomView: View = mInflater.inflate(R.layout.custom_action_bar_layout, null)
+
+
+        actionBar?.customView = actionBarCustomView;
+        actionBar?.setDisplayShowCustomEnabled(true);
 
 
         model = ViewModelProvider(this)[GameViewModel::class.java]
@@ -44,14 +55,9 @@ class GameActivity : AppCompatActivity() {
             gameGridAdapter = GameGridAdapter(model.allCards.value!!, applicationContext, model)
             game_grid_rv.adapter = gameGridAdapter
         })
-
-
-
-
-
     }
 
-
-
-
+    fun goBack(view: View) {
+        startActivity(intentFor<MenuActivity>())
+    }
 }
