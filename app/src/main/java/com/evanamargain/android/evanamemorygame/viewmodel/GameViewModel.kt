@@ -11,7 +11,7 @@ import com.evanamargain.android.evanamemorygame.model.GameConfig
 class GameViewModel : ViewModel() {
     var allCards = MutableLiveData<ArrayList<Card>>()
     private var openedCards = ArrayList<Card>()
-    private var moves = 0
+    var moves = 0
     var gameSize = GameConfig.THREE_BY_FOUR
     private val allCardsData = ArrayList<Card>()
 

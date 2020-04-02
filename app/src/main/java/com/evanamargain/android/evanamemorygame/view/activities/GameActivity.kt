@@ -50,6 +50,8 @@ class GameActivity : AppCompatActivity() {
         model.allCards.observe(this, Observer{
             gameGridAdapter = GameGridAdapter(model.allCards.value!!, applicationContext, model)
             game_grid_rv.adapter = gameGridAdapter
+
+            moves_tv.text = "Moves: ${model.moves}"
         })
     }
 
