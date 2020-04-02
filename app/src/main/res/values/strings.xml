@@ -7,4 +7,5 @@
     <string name="menu_4x5">4x5</string>
     <string name="game_view_title">Find matching pairs!</string>
   <string name="menu_view_instructions">Choose a size!</string>
+    <string name="intent_size">size</string>
 </resources>

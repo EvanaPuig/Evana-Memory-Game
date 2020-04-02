@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.evanamargain.android.evanamemorygame.R
 import com.evanamargain.android.evanamemorygame.inflate
@@ -15,14 +14,14 @@ import kotlinx.android.synthetic.main.recyclerview_item_card.view.*
 
 class GameGridAdapter(private val cards: ArrayList<Card>, private val context: Context, private val model: GameViewModel) : RecyclerView.Adapter<GameGridAdapter.CardHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameGridAdapter.CardHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardHolder {
         val inflatedView = parent.inflate(R.layout.recyclerview_item_card, false)
         return CardHolder(inflatedView, context, model)
     }
 
     override fun getItemCount() = cards.size
 
-    override fun onBindViewHolder(holder: GameGridAdapter.CardHolder, position: Int) {
+    override fun onBindViewHolder(holder: CardHolder, position: Int) {
         val itemCard = cards[position]
         holder.bindCard(itemCard)
     }
@@ -42,8 +41,8 @@ class GameGridAdapter(private val cards: ArrayList<Card>, private val context: C
         override fun onClick(v: View) {
             Log.d("RecyclerView", "Flip card!")
             if(!card?.disabled!!) {
-                var images = (context.resources.obtainTypedArray(R.array.card_fronts))
-                var imageToSet = card?.drawableFront?.let { images.getDrawable(it) }
+                val images = (context.resources.obtainTypedArray(R.array.card_fronts))
+                val imageToSet = card?.drawableFront?.let { images.getDrawable(it) }
                 view.itemImage.setImageDrawable(imageToSet)
                 model.cardOpen(card!!)
             }
@@ -52,12 +51,13 @@ class GameGridAdapter(private val cards: ArrayList<Card>, private val context: C
         fun bindCard(card: Card) {
             this.card = card
             if (!card.matched) {
-                var drawable =
+                val drawable =
                     ResourcesCompat.getDrawable(context.resources, card.drawableBack, null)
                 view.itemImage.setImageDrawable(drawable)
             } else {
-                var images = (context.resources.obtainTypedArray(R.array.card_fronts))
-                var imageToSet = card?.drawableFront?.let { images.getDrawable(it) }
+                val images = (context.resources.obtainTypedArray(R.array.card_fronts))
+                val imageToSet = card.drawableFront.let { images.getDrawable(it) }
+                images.recycle()
                 view.itemImage.setImageDrawable(imageToSet)
             }
         }

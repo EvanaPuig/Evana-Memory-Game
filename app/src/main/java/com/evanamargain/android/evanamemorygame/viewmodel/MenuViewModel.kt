@@ -3,8 +3,6 @@ package com.evanamargain.android.evanamemorygame.viewmodel
 import android.view.View
 import com.evanamargain.android.evanamemorygame.R
 import com.evanamargain.android.evanamemorygame.model.GameConfig
-import com.evanamargain.android.evanamemorygame.view.activities.GameActivity
-import org.jetbrains.anko.intentFor
 
 class MenuViewModel {
     fun determineGameSize(view: View): GameConfig {

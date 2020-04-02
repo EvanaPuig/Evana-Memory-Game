@@ -8,8 +8,6 @@ import com.evanamargain.android.evanamemorygame.viewmodel.MenuViewModel
 import org.jetbrains.anko.intentFor
 
 class MenuActivity : AppCompatActivity() {
-
-    private val TAG: String? = MenuActivity::class.simpleName
     private val menuViewModel = MenuViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {

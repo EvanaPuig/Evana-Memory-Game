@@ -1,10 +1,8 @@
 package com.evanamargain.android.evanamemorygame.view.activities
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,7 +12,6 @@ import com.evanamargain.android.evanamemorygame.model.GameConfig
 import com.evanamargain.android.evanamemorygame.view.adapters.GameGridAdapter
 import com.evanamargain.android.evanamemorygame.viewmodel.GameViewModel
 import kotlinx.android.synthetic.main.activity_game.*
-import kotlinx.android.synthetic.main.custom_action_bar_layout.*
 import org.jetbrains.anko.intentFor
 
 
@@ -28,7 +25,7 @@ class GameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        var actionBar = supportActionBar
+        val actionBar = supportActionBar
         actionBar?.setDisplayShowHomeEnabled(false)
         actionBar?.setDisplayShowTitleEnabled(false)
         val mInflater = LayoutInflater.from(this)
@@ -36,13 +33,13 @@ class GameActivity : AppCompatActivity() {
         val actionBarCustomView: View = mInflater.inflate(R.layout.custom_action_bar_layout, null)
 
 
-        actionBar?.customView = actionBarCustomView;
-        actionBar?.setDisplayShowCustomEnabled(true);
+        actionBar?.customView = actionBarCustomView
+        actionBar?.setDisplayShowCustomEnabled(true)
 
 
         model = ViewModelProvider(this)[GameViewModel::class.java]
 
-        intent?.extras?.get("size")?.let {
+        intent?.extras?.get(getString(R.string.intent_size))?.let {
             model.gameSize = it as GameConfig
         }
 
@@ -51,7 +48,6 @@ class GameActivity : AppCompatActivity() {
 
         model.loadCardList(true)
         model.allCards.observe(this, Observer{
-            Log.d("Log", "changed")
             gameGridAdapter = GameGridAdapter(model.allCards.value!!, applicationContext, model)
             game_grid_rv.adapter = gameGridAdapter
         })

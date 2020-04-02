@@ -2,7 +2,6 @@ package com.evanamargain.android.evanamemorygame.viewmodel
 
 import android.os.Handler
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.evanamargain.android.evanamemorygame.R
@@ -51,7 +50,6 @@ class GameViewModel : ViewModel() {
     }
 
     private fun cardClose() {
-        Log.d("Log", "card close")
         for (card in this.allCards.value!!) {
             if (!card.matched) {
                 card.opened = false
@@ -65,7 +63,6 @@ class GameViewModel : ViewModel() {
 
     //for when cards match
     private fun matched(card1: Card, card2: Card){
-        Log.d("Log", "cards match!")
         openedCards.remove(card1)
         openedCards.remove(card2)
         card1.matched = true
@@ -77,12 +74,11 @@ class GameViewModel : ViewModel() {
 
     //for when cards don't match
     private fun unmatched(card1: Card, card2: Card){
-        Log.d("Log", "cards dont match :(")
         card1.matched = false
         card2.matched = false
         allCards.value?.let { disable(it) }
 
-        var myHandler = Handler()
+        val myHandler = Handler()
         myHandler.postDelayed( {
             allCards.value?.let { enable(it) }
             cardClose()
