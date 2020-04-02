@@ -1,6 +1,7 @@
 package com.evanamargain.android.evanamemorygame.view.activities
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -23,6 +24,11 @@ class GameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        var actionBar = actionBar
+
+
         model = ViewModelProvider(this)[GameViewModel::class.java]
 
         intent?.extras?.get("size")?.let {
@@ -32,10 +38,16 @@ class GameActivity : AppCompatActivity() {
         gridLayoutManager = GridLayoutManager(this, model.gameSize.columns)
         game_grid_rv.layoutManager = gridLayoutManager
 
-        model.getCardList().observe(this, Observer {
+        model.loadCardList(true)
+        model.allCards.observe(this, Observer{
+            Log.d("Log", "changed")
             gameGridAdapter = GameGridAdapter(model.allCards.value!!, applicationContext, model)
             game_grid_rv.adapter = gameGridAdapter
         })
+
+
+
+
 
     }
 

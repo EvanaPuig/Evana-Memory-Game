@@ -51,10 +51,16 @@ class GameGridAdapter(private val cards: ArrayList<Card>, private val context: C
 
         fun bindCard(card: Card) {
             this.card = card
-            var drawable = ResourcesCompat.getDrawable(context.resources, card.drawableBack, null)
-            view.itemImage.setImageDrawable(drawable)
+            if (!card.matched) {
+                var drawable =
+                    ResourcesCompat.getDrawable(context.resources, card.drawableBack, null)
+                view.itemImage.setImageDrawable(drawable)
+            } else {
+                var images = (context.resources.obtainTypedArray(R.array.card_fronts))
+                var imageToSet = card?.drawableFront?.let { images.getDrawable(it) }
+                view.itemImage.setImageDrawable(imageToSet)
+            }
         }
     }
-
 }
 
